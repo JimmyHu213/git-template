@@ -5,7 +5,7 @@ Thank you for contributing! This document covers the workflow, conventions, and 
 ## Getting Started
 
 1. Fork and clone the repository
-2. Run `npm install` to set up dev dependencies (commitlint + Danger.js)
+2. Run `npm install` to set up dev dependencies (commitlint)
 3. Create a branch from `main`
 
 ## Git Workflow
@@ -45,11 +45,11 @@ PR titles must also follow this format.
 1. Fill out the PR template completely
 2. Keep PRs small and focused — one concern per PR
 3. Ensure all CI checks pass before requesting review
-4. Address findings from automated reviewers (CodeRabbit, Copilot, Danger.js)
+4. Address findings from automated reviewers (CodeRabbit, Copilot)
 
 ## Code Review
 
-This repository uses three automated code review tools:
+This repository uses two automated code review tools:
 
 ### CodeRabbit (AI Review)
 - Automatically reviews all non-draft PRs
@@ -61,17 +61,12 @@ This repository uses three automated code review tools:
 - **Setup required:** Enable in repo settings > Rules > Rulesets > Add "Copilot code review" as a required check
 - Instructions in `.github/copilot-instructions.md`
 
-### Danger.js (Rule-Based)
-- Checks PR hygiene: description length, diff size, test coverage, debug statements
-- Rules defined in `dangerfile.ts` — edit to customize per project
-
 ## CI Checks
 
 | Workflow | Purpose |
 |----------|---------|
 | PR Checks | Conventional commit enforcement (PR titles + commit messages) |
 | Security | CodeQL SAST + dependency review + gitleaks secret scanning |
-| Danger | PR hygiene rules |
 | Stale | Auto-labels and closes inactive issues/PRs |
 | Lint | MegaLinter auto-detect linting |
 
