@@ -3,7 +3,7 @@
   "description": "Dev dependencies for CI workflows (commitlint + Danger.js)",
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0",
+    "@commitlint/config-conventional": "^20.5.3",
     "danger": "^12.0.0"
   }
 }
