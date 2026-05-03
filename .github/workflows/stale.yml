@@ -35,4 +35,4 @@ jobs:
           stale-issue-label: stale
           stale-pr-label: stale
           exempt-issue-labels: "pinned,security,help wanted"
-          exempt-pr-labels: "pinned,security"
+          exempt-pr-labels: "pinned,security,help wanted"

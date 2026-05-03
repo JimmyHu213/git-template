@@ -50,28 +50,31 @@ const createdFiles = danger.git.created_files;
 const modifiedFiles = danger.git.modified_files;
 const allChangedFiles = [...createdFiles, ...modifiedFiles];
 
-for (const file of allChangedFiles) {
-  const diff = await danger.git.diffForFile(file);
-  if (diff && /^\+.*\b(TODO|FIXME)\b/m.test(diff.added)) {
-    message(`\`${file}\` contains new TODO/FIXME comments.`);
-  }
-}
-
-// --- console.log / debugger (configurable) ---
-// Fail if console.log or debugger statements were added.
-// To disable: comment out or remove this block.
-for (const file of allChangedFiles) {
-  if (file.endsWith(".ts") || file.endsWith(".js") || file.endsWith(".tsx") || file.endsWith(".jsx")) {
+(async () => {
+  // --- TODO / FIXME ---
+  for (const file of allChangedFiles) {
     const diff = await danger.git.diffForFile(file);
-    if (diff && /^\+.*\bconsole\.log\b/m.test(diff.added)) {
-      fail(
-        `\`${file}\` contains a new \`console.log\` statement. Remove before merging.`
-      );
-    }
-    if (diff && /^\+.*\bdebugger\b/m.test(diff.added)) {
-      fail(
-        `\`${file}\` contains a new \`debugger\` statement. Remove before merging.`
-      );
+    if (diff && /^\+.*\b(TODO|FIXME)\b/m.test(diff.added)) {
+      message(`\`${file}\` contains new TODO/FIXME comments.`);
     }
   }
-}
+
+  // --- console.log / debugger (configurable) ---
+  // Fail if console.log or debugger statements were added.
+  // To disable: comment out or remove this block.
+  for (const file of allChangedFiles) {
+    if (file.endsWith(".ts") || file.endsWith(".js") || file.endsWith(".tsx") || file.endsWith(".jsx")) {
+      const diff = await danger.git.diffForFile(file);
+      if (diff && /^\+.*\bconsole\.log\b/m.test(diff.added)) {
+        fail(
+          `\`${file}\` contains a new \`console.log\` statement. Remove before merging.`
+        );
+      }
+      if (diff && /^\+.*\bdebugger\b/m.test(diff.added)) {
+        fail(
+          `\`${file}\` contains a new \`debugger\` statement. Remove before merging.`
+        );
+      }
+    }
+  }
+})();
