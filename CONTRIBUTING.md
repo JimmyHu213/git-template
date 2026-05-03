@@ -79,6 +79,8 @@ After creating a repo from this template:
 - [ ] Update `.github/CODEOWNERS` with actual team paths
 - [ ] Enable Copilot Code Review: Settings > Rules > Rulesets
 - [ ] Install [CodeRabbit](https://coderabbit.ai) GitHub App on the repo
+- [ ] Enable Dependency graph: Settings > Code security > Dependency graph
+- [ ] Enable Dependabot security updates: Settings > Code security > Dependabot
 - [ ] Enable secret scanning: Settings > Code security > Secret scanning
 - [ ] Enable private vulnerability reporting: Settings > Code security
 - [ ] Configure branch rulesets: require reviews, require status checks, block force push
